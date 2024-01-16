@@ -1,7 +1,18 @@
 import { useContent } from './hooks';
-import { Tree } from 'core';
+import { Tree, Doc } from 'core';
 import { ChakraProvider, Heading } from '@chakra-ui/react'
 import { useState } from 'react';
+
+
+export function DocEditor(props: { doc: Doc }) {
+
+  props.doc.schema['test'].kind
+
+  return <form>
+
+  </form>;
+}
+
 
 export function Editor(props: { tree: Tree }) {
 

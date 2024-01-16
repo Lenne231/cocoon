@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "e0voDL/bnGbMsQZwv/J1yIWzGnKu5o/yk8JpYXV4HLZ3xC5o1szMU0FmG1ylBZ1CsxByYGcCWk76Crm0zyZTRQ==",
+  "success": true,
+  "projectFilePath": "/home/lennart/Source/github/Lenne231/cocoon/statico/statico.fsproj",
+  "expectedPackageFiles": [
+    "/home/lennart/.nuget/packages/fsharp.core/8.0.101/fsharp.core.8.0.101.nupkg.sha512"
+  ],
+  "logs": []
+}
