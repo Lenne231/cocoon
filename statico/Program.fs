@@ -1,7 +1,5 @@
 ﻿open Html
 
-let partial (name:string) contents = div [] contents
-
 let site = html [] [
   head [] []
   body [] [
@@ -11,19 +9,17 @@ let site = html [] [
     a [ _href "/about" ] [str "About" ]
     a [ _href "/impressum" ] [str "Impressum" ]
     hr []
-    partial "main" [
-      routeIndex [
-        h2 [] [ str "Home" ]
-        p [] [
-          str "This is the welcome text!"
-        ]
+    routeIndex [
+      h2 [] [ str "Home" ]
+      p [] [
+        str "This is the welcome text!"
       ]
-      routeSegment "about" [
-        h2 [] [ str "About" ]
-      ]
-      routeSegment "impressum" [
-        h2 [] [ str "Impressum" ]
-      ]
+    ]
+    routeSegment "about" [
+      h2 [] [ str "About" ]
+    ]
+    routeSegment "impressum" [
+      h2 [] [ str "Impressum" ]
     ]
   ]
 ]

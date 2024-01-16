@@ -10,7 +10,7 @@ open System.Reflection
 [<assembly: System.Reflection.AssemblyCompanyAttribute("statico")>]
 [<assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")>]
 [<assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")>]
-[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d16a21ca766d8d937fa6ffe7f650c41b8292cf31")>]
+[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7c255c655610618d70e856979da4b576b8f47e5f")>]
 [<assembly: System.Reflection.AssemblyProductAttribute("statico")>]
 [<assembly: System.Reflection.AssemblyTitleAttribute("statico")>]
 [<assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")>]
