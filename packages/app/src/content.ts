@@ -1,4 +1,4 @@
-import { Tree, createApi, doc, file, folder } from "core";
+import { Tree, createInMemoryStorageApi, doc, file, folder } from "core";
 
 export const tree = {
   'main': folder({
@@ -14,4 +14,4 @@ export const tree = {
 } satisfies Tree;
 
 
-export const content = createApi(tree);
+export const content = createInMemoryStorageApi(tree);
