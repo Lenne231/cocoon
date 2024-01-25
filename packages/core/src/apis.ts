@@ -18,7 +18,7 @@ export interface AccessorApi<T> {
 
 export type ContentApi<C extends Content> =
   C extends Folder ? TreeApi<C["tree"]> :
-  C extends Doc ? AccessorApi<SchemaApi<C['schema']>> :
+  C extends Doc<Schema> ? AccessorApi<SchemaApi<C['schema']>> :
   C extends File ? AccessorApi<string> :
   never;
 
@@ -50,28 +50,6 @@ function createInMemoryAccessor<V>(initialValue: V): AccessorApi<V> {
   }
 }
 
-function getInitialValue<S extends Schema>(schema: S): SchemaApi<S> {
-  const value : Record<string, unknown> = {};
-  for(const name in schema) {
-    const field = schema[name];
-    if(field.kind === 'Text' || field.kind === 'Markdown') {
-      value[name] = '';
-    }
-    if(field.kind === 'Integer') {
-      value[name] = 0;
-    }
-  }
-  return value as SchemaApi<S>;
-}
-
-function createDocumentApi<S extends Schema>(schema: S): AccessorApi<SchemaApi<S>> {
-  return createInMemoryAccessor<SchemaApi<S>>(getInitialValue(schema));
-}
-
-function createFileApi(): AccessorApi<string> {
-  return createInMemoryAccessor("");
-}
-
 function createTreeApi<T extends Tree>(tree: T) : TreeApi<T> {
 
   const api : Record<string, unknown> = {};
@@ -83,11 +61,11 @@ function createTreeApi<T extends Tree>(tree: T) : TreeApi<T> {
     }
 
     if(c.kind === 'Document') {
-      api[name] =  createDocumentApi(c.schema);
+      api[name] = createInMemoryAccessor(c.initialValue);
     }
 
     if(c.kind === 'File') {
-      api[name] =  createFileApi();
+      api[name] = createInMemoryAccessor("");
     }
   }
 

@@ -1,10 +1,11 @@
 
-import { Tree } from 'core';
+import { Tree, TreeApi } from 'core';
 import { Navigation } from './Navigation';
 import { Router, useRouter } from './router';
 
 export interface Props {
   tree: Tree;
+  api: TreeApi<Tree>;
 }
 
 export function Editor() {

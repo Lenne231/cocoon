@@ -1,3 +1,5 @@
+import { SchemaApi } from ".";
+
 export interface TextField {
   kind: 'Text';
 }
@@ -24,9 +26,10 @@ export interface Folder {
   tree: Tree;
 }
 
-export interface Doc {
+export interface Doc<S extends Schema> {
   kind: 'Document';
-  schema: Schema;
+  schema: S;
+  initialValue: SchemaApi<S>
 }
 
 export interface File {
@@ -35,15 +38,15 @@ export interface File {
 
 export type Content =
   | Folder
-  | Doc
+  | Doc<Schema>
   | File;
 
 export function folder<const T extends Tree>(tree: T) {
   return { kind: 'Folder' as const, tree };
 }
 
-export function doc<const S extends Schema>(schema: S) {
-  return { kind: 'Document' as const, schema };
+export function doc<const S extends Schema>(schema: S, initialValue: SchemaApi<S>) {
+  return { kind: 'Document' as const, schema, initialValue };
 }
 
 export function file() {
