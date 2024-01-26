@@ -15,7 +15,7 @@ export function NavigationItem({ name, content, route }: Props) {
 
   if (content.kind === 'Folder') {
     return <>
-      <a onClick={() => router.setRoute([...route, name])}>{name}</a>
+      <span className="text-gray-600">{name}</span>
       <div className="ml-2">
         <NavigationTree tree={content.tree} route={[...route, name]} />
       </div>
@@ -24,13 +24,13 @@ export function NavigationItem({ name, content, route }: Props) {
 
   if (content.kind === 'Document') {
     return <div>
-      <a onClick={() => router.setRoute([...route, name])}>{name}</a>
+      <a className="text-blue-500 cursor-pointer" onClick={() => router.setRoute([...route, name])}>{name}</a>
     </div>;
   }
 
   if (content.kind === 'File') {
     return <div>
-      <a onClick={() => router.setRoute([...route, name])}>{name}</a>
+      <a className="text-blue-500 cursor-pointer" onClick={() => router.setRoute([...route, name])}>{name}</a>
     </div>;
   }
 

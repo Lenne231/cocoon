@@ -5,9 +5,14 @@ import { Admin } from './admin/Admin.tsx'
 import { content, tree } from './content.ts'
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById('admin')!).render(
   <StrictMode>
     <Admin tree={tree} api={content} />
+  </StrictMode>,
+)
+
+ReactDOM.createRoot(document.getElementById('app')!).render(
+  <StrictMode>
     <App />
   </StrictMode>,
 )

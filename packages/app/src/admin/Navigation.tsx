@@ -9,7 +9,7 @@ export interface Props {
 export function Navigation({tree}: Props) {
   const router = useRouter();
   return <nav>
-    <a onClick={() => router.setRoute([])}>Content</a>
+    <span className="text-gray-600">Content</span>
     <div className="ml-2">
       <NavigationTree tree={tree} route={[]} />
     </div>

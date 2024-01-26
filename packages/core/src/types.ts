@@ -23,17 +23,20 @@ export type Tree = Record<string, Content>;
 
 export interface Folder {
   kind: 'Folder';
+  title: string;
   tree: Tree;
 }
 
 export interface Doc<S extends Schema> {
   kind: 'Document';
+  title: string;
   schema: S;
   initialValue: SchemaApi<S>
 }
 
 export interface File {
   kind: 'File';
+  title: string;
 }
 
 export type Content =
@@ -41,14 +44,14 @@ export type Content =
   | Doc<Schema>
   | File;
 
-export function folder<const T extends Tree>(tree: T) {
-  return { kind: 'Folder' as const, tree };
+export function folder<const T extends Tree>(title: string, tree: T) {
+  return { kind: 'Folder' as const, title, tree };
 }
 
-export function doc<const S extends Schema>(schema: S, initialValue: SchemaApi<S>) {
-  return { kind: 'Document' as const, schema, initialValue };
+export function doc<const S extends Schema>(title: string, schema: S, initialValue: SchemaApi<S>) : Doc<S> {
+  return { kind: 'Document' as const, title, schema, initialValue };
 }
 
-export function file() {
-  return { kind: 'File' as const };
+export function file(title: string) : File {
+  return { kind: 'File' as const, title };
 }
