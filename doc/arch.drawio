@@ -4,7 +4,7 @@
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="3" value="" style="swimlane;startSize=0;" vertex="1" parent="1">
+                <mxCell id="3" value="" style="swimlane;startSize=0;dashed=1;" vertex="1" parent="1">
                     <mxGeometry x="60" y="120" width="480" height="200" as="geometry">
                         <mxRectangle x="130" y="310" width="50" height="40" as="alternateBounds"/>
                     </mxGeometry>
@@ -31,7 +31,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="10" value="Development setup" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="3">
-                    <mxGeometry x="155" y="10" width="130" height="30" as="geometry"/>
+                    <mxGeometry x="160" y="10" width="130" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="22" value="Browser&lt;br&gt;(CMS)" style="rounded=0;whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="3">
                     <mxGeometry x="170" y="120" width="120" height="60" as="geometry"/>
@@ -42,19 +42,19 @@
                         <mxPoint x="340" y="360" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="11" value="" style="swimlane;startSize=0;" vertex="1" parent="1">
-                    <mxGeometry x="60" y="600" width="480" height="240" as="geometry">
+                <mxCell id="11" value="" style="swimlane;startSize=0;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="640" width="480" height="240" as="geometry">
                         <mxRectangle x="130" y="310" width="50" height="40" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="13" value="Browser&lt;br&gt;(Website)" style="rounded=0;whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="11">
-                    <mxGeometry x="167.5" y="130" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="50" y="140" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="17" value="Live setup" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="11">
-                    <mxGeometry x="162.5" width="130" height="30" as="geometry"/>
+                    <mxGeometry x="162.5" width="130" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="12" value="Server&lt;br style=&quot;font-size: 8px;&quot;&gt;(Deployed content)" style="whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="11">
-                    <mxGeometry x="175" y="30" width="105" height="50" as="geometry"/>
+                    <mxGeometry x="50" y="40" width="105" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="34" value="" style="endArrow=classic;html=1;fontSize=10;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="11" source="12" target="13">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -62,8 +62,8 @@
                         <mxPoint x="370" y="50" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="24" value="" style="swimlane;startSize=0;" vertex="1" parent="1">
-                    <mxGeometry x="60" y="340" width="480" height="240" as="geometry">
+                <mxCell id="24" value="" style="swimlane;startSize=0;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="350" width="480" height="240" as="geometry">
                         <mxRectangle x="130" y="310" width="50" height="40" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
@@ -96,13 +96,29 @@
                 <mxCell id="31" value="Server&lt;br style=&quot;font-size: 8px;&quot;&gt;(https://adapco.io/)" style="whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="24">
                     <mxGeometry x="175" y="30" width="105" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="32" value="Browser&lt;br&gt;(CMS)" style="rounded=0;whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="24">
+                <mxCell id="32" value="Browser&lt;br&gt;(CMS witch commit feature)" style="rounded=0;whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="24">
                     <mxGeometry x="180" y="150" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="33" value="" style="endArrow=classic;startArrow=classic;html=1;fontSize=8;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="24" source="31" target="32">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="275" y="65" as="sourcePoint"/>
                         <mxPoint x="370" y="150" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="37" style="html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;startArrow=classic;startFill=1;" edge="1" parent="1" source="7" target="26">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="commits / pull requests" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="37">
+                    <mxGeometry x="-0.1435" y="-2" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="39" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="26" target="12">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="deployment" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="39">
+                    <mxGeometry x="0.1707" y="3" relative="1" as="geometry">
+                        <mxPoint y="-12" as="offset"/>
                     </mxGeometry>
                 </mxCell>
             </root>
