@@ -2,19 +2,34 @@ import { Tree, createInMemoryStorageApi, doc, file, folder } from "core";
 
 export const tree = {
   'home': doc('Home', {
-    title: { kind: 'Text' },
-    content: { kind: 'Markdown' }
-  }, {
-    title: "Hello",
-    content: "Welcome to ..."
+    schema: {
+      title: { kind: 'Text' },
+      content: { kind: 'Markdown' }
+    },
+    initialValue: {
+      title: "Hello",
+      content: "Welcome to ..."
+    }
   }),
   'impressum': doc('Impressum', {
-    address: { kind: 'Text' }
-  }, { address: '' }),
+    schema: {
+      address: { kind: 'Text' }
+    },
+    initialValue: { 
+      address: '' 
+    }
+  }),
   'settings': folder('Settings', {
     'posts': doc('Posts', {
-        'numberOfPosts': { kind: 'Integer' }
-    }, { numberOfPosts: 0 }),
+      schema: {
+        'numberOfPosts': { kind: 'Integer' },
+        "test": { kind: 'Text' }
+      }, 
+      initialValue: { 
+        numberOfPosts: 0,
+        test: 'mmm'
+      }
+    }),
     'logo': file('Logo')
   })
 } satisfies Tree;

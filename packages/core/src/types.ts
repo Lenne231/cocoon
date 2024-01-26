@@ -48,8 +48,13 @@ export function folder<const T extends Tree>(title: string, tree: T) {
   return { kind: 'Folder' as const, title, tree };
 }
 
-export function doc<const S extends Schema>(title: string, schema: S, initialValue: SchemaApi<S>) : Doc<S> {
-  return { kind: 'Document' as const, title, schema, initialValue };
+interface DocOptions<S extends Schema> {
+  schema: S;
+  initialValue: SchemaApi<S>;
+}
+
+export function doc<const S extends Schema>(title: string, options: DocOptions<S>) : Doc<S> {
+  return { kind: 'Document' as const, title, ...options };
 }
 
 export function file(title: string) : File {
