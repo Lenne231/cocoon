@@ -93,13 +93,13 @@ export function Editor(props: { api: TreeApi<Tree> }) {
   return assertNever(api as never);
 }
 
-export function Admin({ tree }: Props) {
+export function Admin({ api }: { api: TreeApi<Tree> }) {
 
   return <>
     <Router initialRoute={[]}>
       <div className='flex flex-row h-dvh'>
         <div className='p-6 bg-gray-200'>
-          <Navigation tree={tree} />
+          <Navigation api={api} />
         </div>
         <div className='p-6 bg-gray-100'>
           <Editor api={content} />
