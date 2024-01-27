@@ -1,5 +1,8 @@
 import { Content, Doc, Field, File, Folder, IntegerField, MarkdownField, Schema, TextField, Tree } from "./types";
 
+export const kind = Symbol('kind');
+export const spec = Symbol('spec');
+
 export type FieldApi<F extends Field> =
   F extends TextField ? string :
   F extends MarkdownField ? string :
@@ -10,24 +13,26 @@ export type SchemaApi<S extends Schema> = {
   readonly [P in keyof S]: FieldApi<S[P]>;
 }
 
-export const spec = Symbol('spec');
-
 export interface DocumentApi<S extends Schema> {
-  [spec]: Doc<S>;
+  readonly [kind]: 'Document';
+  readonly [spec]: Doc<S>;
   set(value: SchemaApi<S>):void;
   get() : SchemaApi<S>;
   subscribe(onChangeHandler: () => void): () => void;
 }
 
 export interface FileApi {
-  [spec]: File;
+  readonly [kind]: 'File';
+  readonly [spec]: File;
   set(value: string):void;
   get() : string;
   subscribe(onChangeHandler: () => void): () => void;
 }
 
+export type FolderApi<T extends Tree> = { readonly [kind]: 'Folder'; readonly [spec]: Folder<T>; } & TreeApi<T>;
+
 export type ContentApi<C extends Content> =
-  C extends Folder ? TreeApi<C["tree"]> :
+  C extends Folder<Tree> ? FolderApi<C["tree"]> :
   C extends Doc<Schema> ? DocumentApi<C['schema']> :
   C extends File ? FileApi :
   never;
@@ -42,6 +47,7 @@ function createDocumentApi<S extends Schema>(doc: Doc<S>): DocumentApi<S> {
   let value = doc.initialValue;
   let onChangeHandlers = new Set<() => void>();
   return {
+    [kind]: 'Document',
     [spec]: doc,
     set(v) {
       value = v;
@@ -65,6 +71,7 @@ function createFileApi(file: File): FileApi {
   let value = "";
   let onChangeHandlers = new Set<() => void>();
   return {
+    [kind]: 'File',
     [spec]: file,
     set(v) {
       value = v;
@@ -84,14 +91,25 @@ function createFileApi(file: File): FileApi {
   }
 }
 
+function createFolderApi<T extends Tree>(folder: Folder<T>) : FolderApi<T> {
+  const treeApi = createTreeApi(folder.tree);
+
+  return {
+    [kind]: 'Folder',
+    [spec]: folder,
+    ...treeApi,
+  };
+}
+
 function createTreeApi<T extends Tree>(tree: T) : TreeApi<T> {
 
-  const api : Record<string, unknown> = {};
+  const api : Partial<Record<string, unknown>> = {};
 
   for(let name in tree) {
+
     const c = tree[name as keyof T];
     if(c.kind == 'Folder') {
-      api[name] = createTreeApi(c.tree);
+      api[name] = createFolderApi(c);
     }
 
     if(c.kind === 'Document') {

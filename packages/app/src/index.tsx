@@ -2,12 +2,12 @@ import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import { App } from './app/App.tsx'
 import { Admin } from './admin/Admin.tsx'
-import { content, tree } from './content.ts'
+import content from 'content'
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('admin')!).render(
   <StrictMode>
-    <Admin tree={tree} api={content} />
+    <Admin api={content} />
   </StrictMode>,
 )
 

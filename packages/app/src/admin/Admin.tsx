@@ -1,9 +1,8 @@
 
-import { DocumentApi, Schema, Tree, TreeApi, spec } from 'core';
+import { DocumentApi, Schema, Tree, TreeApi, kind, spec } from 'core';
 import { Navigation } from './Navigation';
 import { Route, Router, useRouter } from './router';
 import { assertNever } from '../assertNever';
-import { content } from '../content';
 import { useState } from 'react';
 
 export interface Props {
@@ -20,7 +19,7 @@ function getApi(route: Route, api: TreeApi<Tree>) {
   const [current, ...rest] = route;
   const a = api[current];
 
-  if(!(spec in a)) {
+  if(a[kind] === undefined || a[kind] === 'Folder') {
     return getApi(rest, a);
   }
 
@@ -102,7 +101,7 @@ export function Admin({ api }: { api: TreeApi<Tree> }) {
           <Navigation api={api} />
         </div>
         <div className='p-6 bg-gray-100'>
-          <Editor api={content} />
+          <Editor api={api} />
         </div>
       </div>
     </Router>

@@ -21,10 +21,10 @@ export type Schema = Record<string, Field>;
 
 export type Tree = Record<string, Content>;
 
-export interface Folder {
+export interface Folder<T extends Tree> {
   kind: 'Folder';
   title: string;
-  tree: Tree;
+  tree: T;
 }
 
 export interface Doc<S extends Schema> {
@@ -40,7 +40,7 @@ export interface File {
 }
 
 export type Content =
-  | Folder
+  | Folder<Tree>
   | Doc<Schema>
   | File;
 

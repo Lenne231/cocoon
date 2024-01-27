@@ -35,4 +35,5 @@ export const tree = {
 } satisfies Tree;
 
 
-export const content = createInMemoryStorageApi(tree);
+export default createInMemoryStorageApi(tree);
+

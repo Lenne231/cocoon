@@ -1,4 +1,4 @@
-import { Content, ContentApi, spec } from "core";
+import { Content, ContentApi, kind, spec } from "core";
 import { assertNever } from "../assertNever";
 import { NavigationTree } from "./NavigationTree";
 import { Route, useRouter } from "./router";
@@ -13,30 +13,26 @@ export function NavigationItem({ name, api, route }: Props) {
 
   const router = useRouter();
 
-  if(!(spec in api)) {
+  if (api[kind] === 'Document') {
+    return <div>
+      <a className="text-blue-500 cursor-pointer" onClick={() => router.setRoute([...route, name])}>{api[spec].title}</a>
+    </div>;
+  }
+
+  if (api[kind] === 'File') {
+    return <div>
+      <a className="text-blue-500 cursor-pointer" onClick={() => router.setRoute([...route, name])}>{api[spec].title}</a>
+    </div>;
+  }
+
+  if(api[kind] === 'Folder') {
     return <>
-      <span className="text-gray-600">{name}</span>
+      <span className="text-gray-600">{api[spec].title}</span>
       <div className="ml-2">
         <NavigationTree api={api} route={[...route, name]} />
       </div>
     </>;
   }
 
-  if (spec in api && api[spec].kind === 'Document') {
-    return <div>
-      <a className="text-blue-500 cursor-pointer" onClick={() => router.setRoute([...route, name])}>{name}</a>
-    </div>;
-  }
-
-  if (spec in api && api[spec].kind === 'File') {
-    return <div>
-      <a className="text-blue-500 cursor-pointer" onClick={() => router.setRoute([...route, name])}>{name}</a>
-    </div>;
-  }
-
-  return 
-
-
-
-  assertNever(api as never);
+  assertNever(api);
 }
