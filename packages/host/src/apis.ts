@@ -1,17 +1,7 @@
-import { Content, Doc, Field, File, Folder, IntegerField, MarkdownField, Schema, TextField, Tree } from "./types";
+import { Content, Doc, File, Folder, Schema, SchemaApi, Tree } from "core";
 
 export const kind = Symbol('kind');
 export const spec = Symbol('spec');
-
-export type FieldApi<F extends Field> =
-  F extends TextField ? string :
-  F extends MarkdownField ? string :
-  F extends IntegerField ? number :
-  never;
-
-export type SchemaApi<S extends Schema> = {
-  readonly [P in keyof S]: FieldApi<S[P]>;
-}
 
 export interface DocumentApi<S extends Schema> {
   readonly [kind]: 'Document';
@@ -124,6 +114,6 @@ function createTreeApi<T extends Tree>(tree: T) : TreeApi<T> {
   return api as TreeApi<T>;
 }
 
-export function createInMemoryStorageApi<T extends Tree>(tree: T) : TreeApi<T> {
+export function createHostApi<T extends Tree>(tree: T) : TreeApi<T> {
   return createTreeApi(tree);
 }
