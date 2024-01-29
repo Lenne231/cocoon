@@ -1,25 +1,14 @@
 import { Schema, SchemaApi } from "core";
 import { DocumentApi } from "client";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 export function useContent<S extends Schema>(content: DocumentApi<S>) : SchemaApi<S> {
 
-  const [promise, setPromise] = useState<Promise<SchemaApi<S>> | SchemaApi<S>>(async () => {
-    const data = await content.get();
-    setPromise(data);
-    return data;
-  });
+  const api = content.connect();
 
-  useEffect(() => {
-    return content.subscribe(() => {
-      const promise = content.get();
-      promise.then(setPromise, () => setPromise(promise));
-    });
-  }, [content]);
-
-  if(promise instanceof Promise) {
-    throw promise;
+  if(api instanceof Promise) {
+    throw api;
   }
 
-  return promise; 
+  return useSyncExternalStore<SchemaApi<S>>(api.subscribe, api.get); 
 }

@@ -6,11 +6,14 @@ import { tree } from 'content';
 import { TreeApi, createHostApi, kind } from './apis.ts';
 import { Outlet, RouteObject, RouterProvider } from 'react-router';
 import { createBrowserRouter} from 'react-router-dom';
-import { Tree } from 'core';
+import { MessageToHost, Tree } from 'core';
 import { assertNever } from './assertNever.ts';
 import { DocumentEditor } from './Content/DocumentEditor.tsx';
 
 const appOrigin = 'http://localhost:5174';
+
+const api = createHostApi(tree);
+
 
 window.addEventListener('message', e => {
 
@@ -18,10 +21,15 @@ window.addEventListener('message', e => {
     return;
   }
 
+  const message : MessageToHost = e.data;
+
+  if(message.kind === 'subscribe') {
+    // TODO: get data and send back
+    message.path
+  }
+
   console.log(e.data);
 });
-
-const api = createHostApi(tree);
 
 
 function getTreeRoutes(api: TreeApi<Tree>) : RouteObject[] {
