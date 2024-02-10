@@ -11,10 +11,10 @@ CMS.init({
       branch: "main"
     },
     load_config_file: false,
-    media_folder: "static/images/uploads",
-    public_folder: "/images/uploads",
+    media_folder: "/packages/app/content/media",
+    public_folder: "/packages/app/content/public",
     collections: [
-      { label: "Blog", name: "blog", folder: "_posts/blog", create: true, fields: [
+      { label: "Blog", name: "blog", folder: "/packages/app/content/posts/blog", create: true, fields: [
         { label: "Title", name: "title", widget: "string" },
         { label: "Publish Date", name: "date", widget: "datetime" },
         { label: "Featured Image", name: "thumbnail", widget: "image" },
