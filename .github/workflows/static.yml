@@ -41,7 +41,7 @@ jobs:
       - name: Install dependencies
         run: yarn      
       - name: Build artifact
-        run: yarn build  
+        run: cd packages/app && yarn build  
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
