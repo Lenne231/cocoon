@@ -20,6 +20,119 @@ CMS.init({
         { label: "Featured Image", name: "thumbnail", widget: "image" },
         { label: "Body", name: "body", widget: "markdown" },
       ]},
+      {
+        "label": "Pages",
+        "name": "pages",
+        "files": [
+          {
+            "label": "About Page",
+            "name": "about",
+            "file": "site/content/about.yml",
+            "fields": [
+              {
+                "label": "Title",
+                "name": "title",
+                "widget": "string"
+              },
+              {
+                "label": "Intro",
+                "name": "intro",
+                "widget": "markdown"
+              },
+              {
+                "label": "Team",
+                "name": "team",
+                "widget": "list",
+                "fields": [
+                  {
+                    "label": "Name",
+                    "name": "name",
+                    "widget": "string"
+                  },
+                  {
+                    "label": "Position",
+                    "name": "position",
+                    "widget": "string"
+                  },
+                  {
+                    "label": "Photo",
+                    "name": "photo",
+                    "widget": "image"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Locations Page",
+            "name": "locations",
+            "file": "site/content/locations.yml",
+            "fields": [
+              {
+                "label": "Title",
+                "name": "title",
+                "widget": "string"
+              },
+              {
+                "label": "Intro",
+                "name": "intro",
+                "widget": "markdown"
+              },
+              {
+                "label": "Locations",
+                "name": "locations",
+                "widget": "list",
+                "fields": [
+                  {
+                    "label": "Name",
+                    "name": "name",
+                    "widget": "string"
+                  },
+                  {
+                    "label": "Address",
+                    "name": "address",
+                    "widget": "string"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     ],
   },
 });
+
+/**
+ * 
+ * 
+ *   - label: "Pages"
+    name: "pages"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "site/content/about.yml"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Intro, name: intro, widget: markdown}
+          - label: Team
+            name: team
+            widget: list
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: Position, name: position, widget: string}
+              - {label: Photo, name: photo, widget: image}
+      - label: "Locations Page"
+        name: "locations"
+        file: "site/content/locations.yml"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Intro, name: intro, widget: markdown}
+          - label: Locations
+            name: locations
+            widget: list
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: Address, name: address, widget: string}
+ * 
+ */
