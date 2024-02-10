@@ -1,0 +1,30 @@
+{
+  "name": "decap-cms-backend",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "private": true,
+  "sideEffects": false,
+  "dependencies": {
+    "@octokit/rest": "^20.0.2",
+    "apollo-cache-inmemory": "^1.6.2",
+    "apollo-client": "^2.6.3",
+    "apollo-link-context": "^1.0.18",
+    "apollo-link-http": "^1.5.15",
+    "common-tags": "^1.8.0",
+    "graphql": "^15.0.0",
+    "graphql-tag": "^2.10.1",
+    "js-base64": "^3.0.0",
+    "octokit": "^3.1.2",
+    "semaphore": "^1.1.0"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "decap-cms-lib-auth": "^3.0.0",
+    "decap-cms-lib-util": "^3.0.0",
+    "decap-cms-ui-default": "^3.0.0",
+    "lodash": "^4.17.11",
+    "prop-types": "^15.7.2",
+    "react": "^18.2.0"
+  }
+}
