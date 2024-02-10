@@ -11,8 +11,8 @@ CMS.init({
       branch: "main"
     },
     load_config_file: false,
-    media_folder: "/packages/app/content/media",
-    public_folder: "/packages/app/content/public",
+    media_folder: "/packages/app/media",
+    public_folder: "/packages/app/public",
     collections: [
       { label: "Blog", name: "blog", folder: "/packages/app/content/posts/blog", create: true, fields: [
         { label: "Title", name: "title", widget: "string" },
