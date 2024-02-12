@@ -5,6 +5,7 @@ CMS.registerBackend('custom', GitHubBackend);
 
 CMS.init({
   config: {
+    local_backend: true,
     backend: {
       name: 'custom' as any,
       repo: "Lenne231/cocoon",
