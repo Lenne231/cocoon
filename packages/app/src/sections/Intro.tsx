@@ -1,7 +1,8 @@
 import * as React from 'react';
+import logoUri from '../assets/logo.png';
 export function Intro() {
   return <div>
-    <h1 className='desktop:text-3xl'>cocoon</h1>
-    <div>Cafe - Bar - ...</div>
+    <img src={logoUri} alt="cocoon" />
+    <div className="text-2xl text-center">Cafe - Bar - Events</div>
   </div>
 }
