@@ -65,7 +65,13 @@ CMS.init({
             ]
           }
         ]
-      }
+      },
+      { label: "Events", name: "events", folder: "/packages/app/content/events", create: true, fields: [
+        { label: "Title", name: "title", widget: "string" },
+        { label: "Date", name: "date", widget: "datetime" },
+        { label: "Featured Image", name: "thumbnail", widget: "image" },
+        { label: "Body", name: "body", widget: "markdown" },
+      ]},
     ],
   },
 });

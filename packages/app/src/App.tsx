@@ -1,7 +1,14 @@
-import { ReactComponent as Post } from '../content/posts/blog/sadsad.md';
+import * as React from 'react';
+import { Contact } from './sections/Contact';
+import { Events } from './sections/Events';
+import { Intro } from './sections/Intro';
+import { About } from './sections/About';
 
 export function App() {
-  return <div>
-    <Post />
-  </div>;
+  return <>
+    <Intro />
+    <Events />
+    <About />
+    <Contact />
+  </>;
 }
