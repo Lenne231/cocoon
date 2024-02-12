@@ -7,8 +7,8 @@ import { About } from './sections/About';
 export function App() {
   return <div className='d-flex'>
     <Intro />
-    <Events />
     <About />
+    <Events />
     <Contact />
   </div>;
 }
