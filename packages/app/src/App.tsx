@@ -5,10 +5,10 @@ import { Intro } from './sections/Intro';
 import { About } from './sections/About';
 
 export function App() {
-  return <>
+  return <div className='d-flex'>
     <Intro />
     <Events />
     <About />
     <Contact />
-  </>;
+  </div>;
 }
