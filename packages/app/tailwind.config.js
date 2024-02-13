@@ -9,7 +9,14 @@ export default {
       'desktop': '1024px',
       // => @media (min-width: 1024px) { ... }
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'plant': "url('/src/assets/plant.png')",
+      },
+      colors: {
+        white: '#ececec'
+      }
+    },
   },
   plugins: [],
 }
