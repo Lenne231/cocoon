@@ -151,7 +151,7 @@ export default class GraphQLAPI extends API {
     try {
       const result = await this.client.mutate(options);
       return result;
-    } catch (error) {
+    } catch (error: any) {
       const errors = error.graphQLErrors;
       if (Array.isArray(errors) && errors.some(e => e.message === 'Ref cannot be created.')) {
         const refName = options?.variables?.createRefInput?.name || '';
@@ -318,7 +318,7 @@ export default class GraphQLAPI extends API {
     const mapped = pullRequests.nodes.map(transformPullRequest);
 
     return (mapped as unknown as any /*Octokit.PullsListResponseItem[]*/).filter(
-      pr => pr.head.ref.startsWith(`${CMS_BRANCH_PREFIX}/`) && predicate(pr),
+      (pr: any) => pr.head.ref.startsWith(`${CMS_BRANCH_PREFIX}/`) && predicate(pr),
     );
   }
 
@@ -580,7 +580,7 @@ export default class GraphQLAPI extends API {
       } else {
         return await this.deleteBranch(branchName);
       }
-    } catch (e) {
+    } catch (e: any) {
       const { graphQLErrors } = e;
       if (graphQLErrors && graphQLErrors.length > 0) {
         const branchNotFound = graphQLErrors.some((e: Error) => e.type === 'NOT_FOUND');

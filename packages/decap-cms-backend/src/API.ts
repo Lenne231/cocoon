@@ -34,7 +34,7 @@ import type {
   ApiRequest,
 } from 'decap-cms-lib-util';
 import type { Semaphore } from 'semaphore';
-import type { Octokit } from '@octokit/rest';
+import { Octokit } from '@octokit/rest';
 
 type GitHubUser = Octokit.UsersGetAuthenticatedResponse;
 type GitCreateTreeParamsTree = Octokit.GitCreateTreeParamsTree;
@@ -327,7 +327,7 @@ export default class API {
       const parsedResponse = await parser(response);
       return parsedResponse;
     } catch (error) {
-      return this.handleRequestError(error, responseStatus);
+      return this.handleRequestError(error as any, responseStatus);
     }
   }
 
@@ -700,7 +700,7 @@ export default class API {
             size: file.size!,
           }))
       );
-    } catch (err) {
+    } catch (err: any) {
       if (err && err.status === 404) {
         console.log('This 404 was expected and handled appropriately.');
         return [];
@@ -1228,7 +1228,7 @@ export default class API {
     try {
       const result = await this.createRef('heads', branchName, sha);
       return result;
-    } catch (e) {
+    } catch (e: any) {
       const message = String(e.message || '');
       if (message === 'Reference update failed') {
         await throwOnConflictingBranches(branchName, name => this.getBranch(name), API_NAME);
